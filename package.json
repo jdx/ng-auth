@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "devDependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.6.1",
+    "gulp": "^3.8.6",
+    "gulp-concat": "^2.3.3",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-sourcemaps": "^1.0.0",
+    "mongoose": "^3.8.12",
+    "morgan": "^1.1.1"
+  },
+  "dependencies": {
+    "use-strict": "^1.0.0"
+  }
+}
