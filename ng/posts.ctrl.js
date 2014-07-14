@@ -8,7 +8,9 @@ angular.module('app')
   reload()
 
   $scope.create = function (post) {
-    $scope.post = {}
-    PostsSvc.create(post).success(reload)
+    PostsSvc.create(post).success(function () {
+      reload()
+      post.body = ""
+    })
   }
 })
