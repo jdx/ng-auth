@@ -1,17 +1,14 @@
-var router     = require('express').Router()
-var bodyParser = require('body-parser')
+'use strict';
+var router         = require('express').Router()
+var bodyParser     = require('body-parser')
+var authMiddleware = require('../middleware/auth')
 
 router.use(bodyParser.json())
+router.use(authMiddleware)
 
 router.get('/', require('./info'))
 
-var posts = require('./posts')
-router.route('/posts')
-  .get(posts.list)
-  .post(posts.create)
-
-var users = require('./user')
-router.route('/user')
-  .post(users.create)
+router.use(require('./posts'))
+router.use(require('./user'))
 
 module.exports = router

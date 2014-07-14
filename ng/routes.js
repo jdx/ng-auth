@@ -14,4 +14,9 @@ angular.module('app')
     controller: 'RegisterCtrl',
     templateUrl: '/assets/partials/register.html'
   })
+  .state('login', {
+    url: '/login',
+    controller: 'LoginCtrl',
+    templateUrl: '/assets/partials/login.html'
+  })
 })

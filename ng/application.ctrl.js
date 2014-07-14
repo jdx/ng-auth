@@ -1,7 +1,17 @@
 angular.module('app')
-.controller('ApplicationCtrl', function ($scope, $window) {
+.controller('ApplicationCtrl', function ($scope, UserSvc) {
   $scope.$on('login', function (_, user) {
     $scope.currentUser = user
-    $window.localStorage.token = user.token
+    UserSvc.setUser(user)
   })
+  $scope.$on('logout', function () {
+    $scope.currentUser = null
+    UserSvc.setUser(null)
+  })
+
+  if (UserSvc.isLoggedIn()) {
+    UserSvc.getUser().success(function (user) {
+      $scope.$broadcast('login', user)
+    })
+  }
 })

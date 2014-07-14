@@ -1,16 +1,20 @@
+'use strict';
+var router = require('express').Router()
 var Post = require('../models/post')
 
-exports.list = function (req, res, next) {
+router.get('/posts', function (req, res, next) {
   Post.find()
+  .populate('author')
   .sort('-createdAt')
   .exec(function (err, posts) {
     if (err) return next(err)
     res.json(posts)
   })
-}
+})
 
-exports.create = function (req, res, next) {
+router.post('/posts', function (req, res, next) {
   var post = new Post({
+    author: req.user.id,
     body: req.body.body,
     createdAt: Date.now()
   })
@@ -18,4 +22,6 @@ exports.create = function (req, res, next) {
     if (err) return next(err)
     res.json(post)
   })
-}
+})
+
+module.exports = router

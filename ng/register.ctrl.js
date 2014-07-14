@@ -1,8 +1,9 @@
 angular.module('app')
-.controller('RegisterCtrl', function ($scope, $rootScope, UserSvc) {
+.controller('RegisterCtrl', function ($scope, $location, UserSvc) {
   $scope.register = function (user) {
     UserSvc.create(user).success(function (user) {
-      $rootScope.$broadcast('login', user)
+      $scope.$emit('login', user)
+      $location.path('/')
     })
   }
 })
