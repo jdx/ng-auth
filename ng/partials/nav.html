@@ -5,7 +5,8 @@
     <a href='/login'>Login</a>
   </div>
   <div ng-if='currentUser'>
-    <span>Logged in as {{currentUser.username}}</span>
+    Logged in as
+    <a ng-href='/users/{{currentUser.username}}'>{{currentUser.username}}</a>
     <a href='#' ng-click='logout()'>Logout</a>
   </div>
 </div>
