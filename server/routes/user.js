@@ -48,4 +48,12 @@ router.post('/login', function (req, res, next) {
   })
 })
 
+router.get('/users/:username', function (req, res, next) {
+  User.findOne({username: req.params.username})
+  .exec(function (err, user) {
+    if (err) { return next(err) }
+    res.json(user)
+  })
+})
+
 module.exports = router

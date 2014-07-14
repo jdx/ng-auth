@@ -1,6 +1,7 @@
 'use strict';
 var router = require('express').Router()
 var Post = require('../models/post')
+var User = require('../models/user')
 
 router.get('/posts', function (req, res, next) {
   Post.find()
@@ -9,6 +10,18 @@ router.get('/posts', function (req, res, next) {
   .exec(function (err, posts) {
     if (err) return next(err)
     res.json(posts)
+  })
+})
+
+router.get('/users/:username/posts', function (req, res, next) {
+  User.findOne({username: req.params.username}, function (err, user) {
+    if (err) { return next(err) }
+    Post.find({author: user})
+    .sort('-createdAt')
+    .exec(function (err, posts) {
+      if (err) { return next(err) }
+      res.json(posts)
+    })
   })
 })
 

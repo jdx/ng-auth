@@ -31,4 +31,8 @@ angular.module('app')
   this.getUser = function () {
     return $http.get('/api/user')
   }
+
+  this.findUser = function (username) {
+    return $http.get('/api/users/' + username)
+  }
 })

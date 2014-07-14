@@ -1,8 +1,8 @@
 <div ng-controller='NavCtrl'>
-  <a href='#' ui-sref='posts'>Home</a>
+  <a href='/'>Home</a>
   <div ng-if='!currentUser'>
-    <a href='#' ui-sref='register'>Register</a>
-    <a href='#' ui-sref='login'>Login</a>
+    <a href='/register'>Register</a>
+    <a href='/login'>Login</a>
   </div>
   <div ng-if='currentUser'>
     <span>Logged in as {{currentUser.username}}</span>

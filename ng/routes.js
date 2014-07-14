@@ -1,22 +1,22 @@
 angular.module('app')
-.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true)
-  $urlRouterProvider.otherwise('/')
 
-  $stateProvider
-  .state('posts', {
-    url: '/',
+  $routeProvider
+  .when('/', {
     controller: 'PostsCtrl',
     templateUrl: '/assets/partials/posts.html'
   })
-  .state('register', {
-    url: '/register',
+  .when('/register', {
     controller: 'RegisterCtrl',
     templateUrl: '/assets/partials/register.html'
   })
-  .state('login', {
-    url: '/login',
+  .when('/login', {
     controller: 'LoginCtrl',
     templateUrl: '/assets/partials/login.html'
+  })
+  .when('/users/:username', {
+    controller: 'ProfileCtrl',
+    templateUrl: '/assets/partials/profile.html'
   })
 })
