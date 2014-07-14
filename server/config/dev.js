@@ -1,5 +1,6 @@
 var packageJson = require('../../package.json')
 
 module.exports = {
-  version: packageJson.version
+  version: packageJson.version,
+  secret:  'devkey'
 }

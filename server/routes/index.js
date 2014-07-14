@@ -10,4 +10,8 @@ router.route('/posts')
   .get(posts.list)
   .post(posts.create)
 
+var users = require('./user')
+router.route('/user')
+  .post(users.create)
+
 module.exports = router
